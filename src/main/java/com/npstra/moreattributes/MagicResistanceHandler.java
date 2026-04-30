@@ -7,10 +7,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class MagicResistanceHandler {
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
+        if (!(event.getEntity() instanceof EntityPlayer)) return;
         if (!event.getSource().isMagicDamage()) return;
-        if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) return;
 
-        EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        EntityPlayer player = (EntityPlayer) event.getEntity();
         double attrValue = player.getEntityAttribute(ModAttributes.MAGIC_RESISTANCE).getAttributeValue();
         if (attrValue == 1.0) return;
 
