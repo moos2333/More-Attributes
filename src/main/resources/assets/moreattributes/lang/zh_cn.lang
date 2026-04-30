@@ -1,4 +1,4 @@
-moreattributes.rangeDamage=远程伤害
-moreattributes.magicDamage=魔法伤害
-moreattributes.closeRangeDamage=近距离威力
-moreattributes.longRangeDamage=远距离威力
+attribute.name.moreattributes.rangeDamage=远程伤害
+attribute.name.moreattributes.magicDamage=魔法伤害
+attribute.name.moreattributes.closeRangeDamage=近距离威力
+attribute.name.moreattributes.longRangeDamage=远距离威力
