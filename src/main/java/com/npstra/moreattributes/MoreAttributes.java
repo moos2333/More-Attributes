@@ -8,14 +8,16 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Tags.MOD_ID, name = Tags.MOD_NAME, version = Tags.VERSION)
 public class MoreAttributes {
-
     public static final Logger LOGGER = LogManager.getLogger(Tags.MOD_NAME);
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        LOGGER.info("Hello From {}!", Tags.MOD_NAME);
         MinecraftForge.EVENT_BUS.register(new AttributeInjector());
         MinecraftForge.EVENT_BUS.register(new RangeDamageHandler());
         MinecraftForge.EVENT_BUS.register(new MagicDamageHandler());
         MinecraftForge.EVENT_BUS.register(new DistanceDamageHandler());
+        MinecraftForge.EVENT_BUS.register(new PhysicalResistanceHandler());
+        MinecraftForge.EVENT_BUS.register(new MagicResistanceHandler());
     }
 }

@@ -19,4 +19,12 @@ public class ModAttributes {
     public static final IAttribute LONG_RANGE_DAMAGE = new RangedAttribute(
             null, "moreattributes.longRangeDamage", 1.0, 0.0, 1024.0
     ).setShouldWatch(true);
+
+    public static final IAttribute PHYSICAL_RESISTANCE = new RangedAttribute(
+            null, "moreattributes.physicalResistance", 1.0, -1024.0, 1024.0
+    ).setShouldWatch(true);
+
+    public static final IAttribute MAGIC_RESISTANCE = new RangedAttribute(
+            null, "moreattributes.magicResistance", 1.0, -1024.0, 1024.0
+    ).setShouldWatch(true);
 }
