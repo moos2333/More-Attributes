@@ -12,7 +12,7 @@ A lightweight Forge 1.12.2 mod that adds **six RPG‑style attributes** and **si
 | ---------------------- | --------------------------------------- | ----------------------------------------------------- |
 | Range Damage           | `moreattributes.rangeDamage`           | Multiplies projectile damage you deal                 |
 | Magic Damage           | `moreattributes.magicDamage`           | Multiplies magic damage you deal                      |
-| Short Range Damage     | `moreattributes.closeRangeDamage`      | Multiplies all damage you deal within 7 blocks        |
+| Short Range Damage     | `moreattributes.shortRangeDamage`      | Multiplies all damage you deal within 7 blocks        |
 | Long Range Damage      | `moreattributes.longRangeDamage`       | Multiplies all damage you deal beyond 7 blocks        |
 | Physical Resistance    | `moreattributes.physicalResistance`    | Multiplies non‑magic damage you take (diminishing)    |
 | Magic Resistance       | `moreattributes.magicResistance`       | Multiplies magic damage you take (diminishing)        |
@@ -74,6 +74,7 @@ To apply a potion effect, use the vanilla `/effect` command, e.g.:
 ```
 /give @p minecraft:potion 1 0 {CustomPotionEffects:[{Id:"moreattributes:bravery",Duration:200,Amplifier:1}]}
 ```
+
 ---
 
 ## Design

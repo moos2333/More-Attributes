@@ -13,7 +13,7 @@ public class ModAttributes {
     ).setShouldWatch(true);
 
     public static final IAttribute CLOSE_RANGE_DAMAGE = new RangedAttribute(
-            null, "moreattributes.closeRangeDamage", 1.0, 0.0, 1024.0
+            null, "moreattributes.shortRangeDamage", 1.0, 0.0, 1024.0
     ).setShouldWatch(true);
 
     public static final IAttribute LONG_RANGE_DAMAGE = new RangedAttribute(

@@ -53,9 +53,9 @@ public class MoreAttributes {
             if (MoreAttributes.enablePotionSnipe)
                 event.getRegistry().register(new PotionSnipe());
             if (MoreAttributes.enablePotionDefenceBoundary)
-                event.getRegistry().register(new PotionDefenceBoundary());
+                event.getRegistry().register(new PotionPhysicalDefence());
             if (MoreAttributes.enablePotionMagicShelter)
-                event.getRegistry().register(new PotionMagicShelter());
+                event.getRegistry().register(new PotionMagicDefence());
             if (MoreAttributes.enablePotionDeadeye)
                 event.getRegistry().register(new PotionDeadeye());
             if (MoreAttributes.enablePotionArcane)

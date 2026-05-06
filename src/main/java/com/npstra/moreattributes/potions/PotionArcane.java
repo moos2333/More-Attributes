@@ -15,6 +15,7 @@ public class PotionArcane extends Potion {
         super(false, 0x4B0082);
         setPotionName("effect.moreattributes.arcane");
         setRegistryName("moreattributes:arcane");
+        registerPotionAttributeModifier(ModAttributes.MAGIC_DAMAGE, UUID_ARCANE.toString(), 0.0, 1);
     }
 
     @Override

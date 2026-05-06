@@ -2,7 +2,6 @@ package com.npstra.moreattributes.potions;
 
 import com.npstra.moreattributes.ModAttributes;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +15,7 @@ public class PotionBravery extends Potion {
         super(false, 0xFF6600);
         setPotionName("effect.moreattributes.bravery");
         setRegistryName("moreattributes:bravery");
+        registerPotionAttributeModifier(ModAttributes.CLOSE_RANGE_DAMAGE, UUID_BRAVERY.toString(), 0.0, 1);
     }
 
     @Override

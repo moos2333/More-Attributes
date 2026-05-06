@@ -8,21 +8,22 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import java.util.UUID;
 
-public class PotionMagicShelter extends Potion {
-    private static final UUID UUID_MAGIC_SHELTER = UUID.fromString("a1b2c3d4-0004-0004-0004-000000000004");
+public class PotionPhysicalDefence extends Potion {
+    private static final UUID UUID_PHYSICAL_DEFENCE = UUID.fromString("a1b2c3d4-0003-0003-0003-000000000003");
 
-    public PotionMagicShelter() {
-        super(false, 0x800080);
-        setPotionName("effect.moreattributes.magicdefence");
-        setRegistryName("moreattributes:magicdefence");
+    public PotionPhysicalDefence() {
+        super(false, 0x888888);
+        setPotionName("effect.moreattributes.physicaldefence");
+        setRegistryName("moreattributes:physicaldefence");
+        registerPotionAttributeModifier(ModAttributes.PHYSICAL_RESISTANCE, UUID_PHYSICAL_DEFENCE.toString(), 0.0, 1);
     }
 
     @Override
     public void applyAttributesModifiersToEntity(EntityLivingBase entity, AbstractAttributeMap attributeMap, int amplifier) {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            AttributeModifier mod = new AttributeModifier(UUID_MAGIC_SHELTER, "MagicShelter", 0.01 * (amplifier + 1), 1);
-            player.getEntityAttribute(ModAttributes.MAGIC_RESISTANCE).applyModifier(mod);
+            AttributeModifier mod = new AttributeModifier(UUID_PHYSICAL_DEFENCE, "PhysicalDefence", 0.01 * (amplifier + 1), 1);
+            player.getEntityAttribute(ModAttributes.PHYSICAL_RESISTANCE).applyModifier(mod);
         }
     }
 
@@ -30,7 +31,7 @@ public class PotionMagicShelter extends Potion {
     public void removeAttributesModifiersFromEntity(EntityLivingBase entity, AbstractAttributeMap attributeMap, int amplifier) {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            player.getEntityAttribute(ModAttributes.MAGIC_RESISTANCE).removeModifier(UUID_MAGIC_SHELTER);
+            player.getEntityAttribute(ModAttributes.PHYSICAL_RESISTANCE).removeModifier(UUID_PHYSICAL_DEFENCE);
         }
     }
 }
