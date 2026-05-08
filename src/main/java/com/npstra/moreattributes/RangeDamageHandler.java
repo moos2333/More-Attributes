@@ -11,6 +11,7 @@ public class RangeDamageHandler {
         if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) return;
 
         EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        ModAttributes.ensureAttribute(player, ModAttributes.RANGE_DAMAGE);
         float multiplier = (float) player.getEntityAttribute(ModAttributes.RANGE_DAMAGE).getAttributeValue();
         if (multiplier != 1.0F)
             event.setAmount(event.getAmount() * multiplier);

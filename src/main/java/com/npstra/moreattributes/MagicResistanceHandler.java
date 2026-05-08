@@ -11,6 +11,7 @@ public class MagicResistanceHandler {
         if (!event.getSource().isMagicDamage()) return;
 
         EntityPlayer player = (EntityPlayer) event.getEntity();
+        ModAttributes.ensureAttribute(player, ModAttributes.MAGIC_RESISTANCE);
         double attrValue = player.getEntityAttribute(ModAttributes.MAGIC_RESISTANCE).getAttributeValue();
         if (attrValue == 1.0) return;
 

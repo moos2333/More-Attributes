@@ -11,6 +11,7 @@ public class PhysicalResistanceHandler {
         if (event.getSource().isMagicDamage()) return;
 
         EntityPlayer player = (EntityPlayer) event.getEntity();
+        ModAttributes.ensureAttribute(player, ModAttributes.PHYSICAL_RESISTANCE);
         double attrValue = player.getEntityAttribute(ModAttributes.PHYSICAL_RESISTANCE).getAttributeValue();
         if (attrValue == 1.0) return;
 

@@ -11,6 +11,7 @@ public class MagicDamageHandler {
         if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) return;
 
         EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
+        ModAttributes.ensureAttribute(player, ModAttributes.MAGIC_DAMAGE);
         float multiplier = (float) player.getEntityAttribute(ModAttributes.MAGIC_DAMAGE).getAttributeValue();
         if (multiplier != 1.0F)
             event.setAmount(event.getAmount() * multiplier);

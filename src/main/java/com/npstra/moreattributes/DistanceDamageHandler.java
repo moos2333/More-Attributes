@@ -1,7 +1,6 @@
 package com.npstra.moreattributes;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -15,10 +14,10 @@ public class DistanceDamageHandler {
         if (!(trueSource instanceof EntityPlayer)) return;
 
         EntityPlayer player = (EntityPlayer) trueSource;
-        IAttributeInstance closeAttr = player.getEntityAttribute(ModAttributes.CLOSE_RANGE_DAMAGE);
-        IAttributeInstance longAttr = player.getEntityAttribute(ModAttributes.LONG_RANGE_DAMAGE);
-        double closeVal = closeAttr.getAttributeValue();
-        double longVal = longAttr.getAttributeValue();
+        ModAttributes.ensureAttribute(player, ModAttributes.CLOSE_RANGE_DAMAGE);
+        ModAttributes.ensureAttribute(player, ModAttributes.LONG_RANGE_DAMAGE);
+        double closeVal = player.getEntityAttribute(ModAttributes.CLOSE_RANGE_DAMAGE).getAttributeValue();
+        double longVal = player.getEntityAttribute(ModAttributes.LONG_RANGE_DAMAGE).getAttributeValue();
 
         if (closeVal == 1.0 && longVal == 1.0) return;
 
