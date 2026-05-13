@@ -1,6 +1,7 @@
 package com.npstra.moreattributes.potions;
 
 import com.npstra.moreattributes.ModAttributes;
+import com.npstra.moreattributes.MoreAttributes;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -22,7 +23,7 @@ public class PotionSnipe extends Potion {
     public void applyAttributesModifiersToEntity(EntityLivingBase entity, AbstractAttributeMap attributeMap, int amplifier) {
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
-            AttributeModifier mod = new AttributeModifier(UUID_SNIPE, "Snipe", 0.01 * (amplifier + 1), 1);
+            AttributeModifier mod = new AttributeModifier(UUID_SNIPE, "Snipe", MoreAttributes.snipeBonus * (amplifier + 1), 1);
             player.getEntityAttribute(ModAttributes.LONG_RANGE_DAMAGE).applyModifier(mod);
         }
     }
