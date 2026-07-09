@@ -17,6 +17,7 @@ public class PotionPhysicalDefence extends Potion {
         setPotionName("effect.moreattributes.physicaldefence");
         setRegistryName("moreattributes:physicaldefence");
         registerPotionAttributeModifier(ModAttributes.PHYSICAL_RESISTANCE, UUID_PHYSICAL_DEFENCE.toString(), 0.0, 1);
+        setBeneficial();
     }
 
     @Override

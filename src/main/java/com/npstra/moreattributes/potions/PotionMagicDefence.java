@@ -17,6 +17,7 @@ public class PotionMagicDefence extends Potion {
         setPotionName("effect.moreattributes.magicdefence");
         setRegistryName("moreattributes:magicdefence");
         registerPotionAttributeModifier(ModAttributes.MAGIC_RESISTANCE, UUID_MAGIC_DEFENCE.toString(), 0.0, 1);
+        setBeneficial();
     }
 
     @Override

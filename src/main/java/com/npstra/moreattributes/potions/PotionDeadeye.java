@@ -17,6 +17,7 @@ public class PotionDeadeye extends Potion {
         setPotionName("effect.moreattributes.deadeye");
         setRegistryName("moreattributes:deadeye");
         registerPotionAttributeModifier(ModAttributes.RANGE_DAMAGE, UUID_DEADEYE.toString(), 0.0, 1);
+        setBeneficial();
     }
 
     @Override

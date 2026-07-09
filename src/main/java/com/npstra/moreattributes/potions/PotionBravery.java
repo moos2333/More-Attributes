@@ -17,6 +17,7 @@ public class PotionBravery extends Potion {
         setPotionName("effect.moreattributes.bravery");
         setRegistryName("moreattributes:bravery");
         registerPotionAttributeModifier(ModAttributes.CLOSE_RANGE_DAMAGE, UUID_BRAVERY.toString(), 0.0, 1);
+        setBeneficial();
     }
 
     @Override

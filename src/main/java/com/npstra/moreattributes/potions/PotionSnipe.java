@@ -17,6 +17,7 @@ public class PotionSnipe extends Potion {
         setPotionName("effect.moreattributes.snipe");
         setRegistryName("moreattributes:snipe");
         registerPotionAttributeModifier(ModAttributes.LONG_RANGE_DAMAGE, UUID_SNIPE.toString(), 0.0, 1);
+        setBeneficial();
     }
 
     @Override
