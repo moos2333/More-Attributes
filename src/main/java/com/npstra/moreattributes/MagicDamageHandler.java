@@ -1,18 +1,21 @@
 package com.npstra.moreattributes;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class MagicDamageHandler {
+public final class MagicDamageHandler {
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
-        if (!event.getSource().isMagicDamage()) return;
-        if (!(event.getSource().getTrueSource() instanceof EntityPlayer)) return;
+        DamageSource source = event.getSource();
+        if (!source.isMagicDamage()) return;
+        if (!(source.getTrueSource() instanceof EntityPlayer)) return;
 
-        EntityPlayer player = (EntityPlayer) event.getSource().getTrueSource();
-        ModAttributes.ensureAttribute(player, ModAttributes.MAGIC_DAMAGE);
-        float multiplier = (float) player.getEntityAttribute(ModAttributes.MAGIC_DAMAGE).getAttributeValue();
+        EntityPlayer player = (EntityPlayer) source.getTrueSource();
+        IAttributeInstance inst = ModAttributes.ensureAttribute(player, ModAttributes.MAGIC_DAMAGE);
+        float multiplier = (float) inst.getAttributeValue();
         if (multiplier != 1.0F)
             event.setAmount(event.getAmount() * multiplier);
     }

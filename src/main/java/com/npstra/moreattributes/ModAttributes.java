@@ -1,10 +1,11 @@
 package com.npstra.moreattributes;
 
 import net.minecraft.entity.ai.attributes.IAttribute;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class ModAttributes {
+public final class ModAttributes {
     public static final IAttribute RANGE_DAMAGE = new RangedAttribute(
             null, "moreattributes.rangeDamage", 1.0, 0.0, 1024.0
     ).setShouldWatch(true);
@@ -29,9 +30,8 @@ public class ModAttributes {
             null, "moreattributes.magicResistance", 1.0, -1024.0, 1024.0
     ).setShouldWatch(true);
 
-    public static void ensureAttribute(EntityPlayer player, IAttribute attribute) {
-        if (player.getAttributeMap().getAttributeInstance(attribute) == null) {
-            player.getAttributeMap().registerAttribute(attribute);
-        }
+    public static IAttributeInstance ensureAttribute(EntityPlayer player, IAttribute attribute) {
+        IAttributeInstance instance = player.getAttributeMap().getAttributeInstance(attribute);
+        return instance != null ? instance : player.getAttributeMap().registerAttribute(attribute);
     }
 }
