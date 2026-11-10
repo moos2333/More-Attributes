@@ -1,6 +1,8 @@
 package com.npstra.moreattributes;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -8,11 +10,12 @@ public final class MagicResistanceHandler {
     @SubscribeEvent
     public void onLivingHurt(LivingHurtEvent event) {
         if (!(event.getEntity() instanceof EntityPlayer)) return;
-        if (!event.getSource().isMagicDamage()) return;
+        DamageSource src = event.getSource();
+        if (!src.isMagicDamage()) return;
 
         EntityPlayer player = (EntityPlayer) event.getEntity();
-        ModAttributes.ensureAttribute(player, ModAttributes.MAGIC_RESISTANCE);
-        double value = player.getEntityAttribute(ModAttributes.MAGIC_RESISTANCE).getAttributeValue();
+        IAttributeInstance inst = ModAttributes.ensureAttribute(player, ModAttributes.MAGIC_RESISTANCE);
+        double value = inst.getAttributeValue();
         if (value == 1.0) return;
 
         float multiplier = ResistanceMath.multiplier(value);

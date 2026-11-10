@@ -5,8 +5,9 @@ import com.npstra.moreattributes.MoreAttributes;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.potion.Potion;
+
 import java.util.UUID;
 
 public class PotionArcane extends Potion {
@@ -16,24 +17,22 @@ public class PotionArcane extends Potion {
         super(false, 0x4B0082);
         setPotionName("effect.moreattributes.arcane");
         setRegistryName("moreattributes:arcane");
-        registerPotionAttributeModifier(ModAttributes.MAGIC_DAMAGE, UUID_ARCANE.toString(), 0.0, 1);
         setBeneficial();
     }
 
     @Override
     public void applyAttributesModifiersToEntity(EntityLivingBase entity, AbstractAttributeMap attributeMap, int amplifier) {
-        if (entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            AttributeModifier mod = new AttributeModifier(UUID_ARCANE, "Arcane", MoreAttributes.arcaneBonus * (amplifier + 1), 1);
-            player.getEntityAttribute(ModAttributes.MAGIC_DAMAGE).applyModifier(mod);
-        }
+        IAttributeInstance inst = attributeMap.getAttributeInstance(ModAttributes.MAGIC_DAMAGE);
+        if (inst == null) return;
+        inst.removeModifier(UUID_ARCANE);
+        inst.applyModifier(new AttributeModifier(UUID_ARCANE, "Arcane",
+                MoreAttributes.arcaneBonus * (amplifier + 1), 1));
     }
 
     @Override
     public void removeAttributesModifiersFromEntity(EntityLivingBase entity, AbstractAttributeMap attributeMap, int amplifier) {
-        if (entity instanceof EntityPlayer) {
-            EntityPlayer player = (EntityPlayer) entity;
-            player.getEntityAttribute(ModAttributes.MAGIC_DAMAGE).removeModifier(UUID_ARCANE);
-        }
+        IAttributeInstance inst = attributeMap.getAttributeInstance(ModAttributes.MAGIC_DAMAGE);
+        if (inst == null) return;
+        inst.removeModifier(UUID_ARCANE);
     }
 }
